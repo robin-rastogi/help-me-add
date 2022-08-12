@@ -1,0 +1,93 @@
+{
+	"name": "help-me-add",
+	"publisher": "evendead",
+	"author": {
+		"name": "Shreyas Sarve",
+		"email": "i.made.jarvis@gmai.com",
+		"url": "https://github.com/shreyasSarve"
+	},
+	"maintainers": [
+		{
+			"name": "Shreyas Sarve",
+			"email": "i.made.jarvis@gmai.com",
+			"url": "https://github.com/shreyasSarve"
+		}
+	],
+	"icon": "logo.png",
+	"displayName": "gitignore",
+	"description": "Extension helps you to add files/folder to gitignore on single click",
+	"version": "1.0.1",
+	"repository": {
+		"type": "github",
+		"url": "https://github.com/shreyasSarve/help-me-add"
+	},
+	"engines": {
+		"vscode": "^1.67.0"
+	},
+	"categories": [
+		"Formatters",
+		"Snippets"
+	],
+	"activationEvents": [
+		"onStartupFinished"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "help-me-add.activate",
+				"title": "Activate gitignore"
+			},
+			{
+				"command": "add.when.clicked",
+				"title": "Add to gitignore",
+				"enablement": "add.when.clicked"
+			}
+		],
+		"menus": {
+			"explorer/context": [
+				{
+					"command": "add.when.clicked",
+					"group": "2_workspace",
+					"when": "add.when.clicked"
+				}
+			],
+			"commandPalette": [
+				{
+					"command": "help-me-add.activate",
+					"when": "workspaceFolderCount > 0 "
+				},
+				{
+					"command": "add.when.clicked",
+					"when": "false"
+				}
+			]
+		},
+		"configuration": {
+			"title": "Gitignore",
+			"properties": {
+				"isGitignoreExtActive": {
+					"type": "boolean",
+					"default": false,
+					"description": "Activate Extention in this repository"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.2.0",
+		"@types/mocha": "^9.1.1",
+		"@types/node": "16.x",
+		"@types/vscode": "^1.67.0",
+		"@vscode/test-electron": "^2.1.3",
+		"eslint": "^8.16.0",
+		"glob": "^8.0.3",
+		"mocha": "^10.0.0",
+		"typescript": "^4.7.2"
+	}
+}
